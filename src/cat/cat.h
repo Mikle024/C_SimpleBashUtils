@@ -9,10 +9,17 @@
 #include "errorProcessingCat.h"
 #include "operationParserCat.h"
 
+#if defined(__APPLE__) || defined(__MACH__)
+void readFile(OPER *flags, char *nameFile);
+
+#elif defined(__linux__)
+void readFile(OPER *flags, char *nameFile, int *lineNumber);
+
+#endif
+
 void outLine(OPER *flags, char *line, int quantitySymbol);
 void output(OPER *flags, char *line, int *lineNumber, int *emptyLine,
             int quantitySymbol);
-void readFile(OPER *flags, char *nameFile);
 char outFlagV(char currentChar);
 void catFromStdin();
 

@@ -1,5 +1,6 @@
 #include "cat.h"
 
+#if defined(__APPLE__) || defined(__MACH__)
 void readFile(OPER *flags, char *nameFile) {
   FILE *file = fopen(nameFile, "rt");
   if (!noSuchFileError(file, nameFile)) {
@@ -16,6 +17,26 @@ void readFile(OPER *flags, char *nameFile) {
     fclose(file);
   }
 }
+
+#elif defined(__linux__)
+void readFile(OPER *flags, char *nameFile, int *lineNumber) {
+  FILE *file = fopen(nameFile, "rt");
+  if (!noSuchFileError(file, nameFile)) {
+    char *line = NULL;
+    size_t memoryLine = 0;
+    int readLine = getline(&line, &memoryLine, file);
+
+    int emptyLine = 0;
+    while (readLine != -1) {
+      output(flags, line, lineNumber, &emptyLine, readLine);
+      readLine = getline(&line, &memoryLine, file);
+    }
+    free(line);
+    fclose(file);
+  }
+}
+
+#endif
 
 void output(OPER *flags, char *line, int *lineNumber, int *emptyLine,
             int quantitySymbol) {
