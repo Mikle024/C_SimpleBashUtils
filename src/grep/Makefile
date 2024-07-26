@@ -28,6 +28,12 @@ grep.o: grep.c
 errorProcessingGrep.o: errorProcessingGrep.c
 	$(CC) $(FLAGS) errorProcessingGrep.c
 
+clang_format:
+	cp ../../materials/.clang-format .clang-format
+	clang-format -i *.c *.h
+	rm .clang-format
+
+
 rebuild: clean all
 
 clean:

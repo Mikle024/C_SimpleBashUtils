@@ -28,6 +28,11 @@ errorProcessingCat.o: errorProcessingCat.c
 cat.o: cat.c
 	$(CC) $(FLAGS) cat.c
 
+clang_format:
+	cp ../../materials/.clang-format .clang-format
+	clang-format -i *.c *.h
+	rm .clang-format
+
 rebuild: clean all
 
 clean:

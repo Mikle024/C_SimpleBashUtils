@@ -18,11 +18,11 @@ diff 1 2
 
 if [ $? -eq  0 ]
 then
-    echo "Test $i. $var: SUCCESSFUL"
+    echo "Test $i. $var: \033[32mSUCCESSFUL\033[0m"
     suc=$((suc+1))
     echo "---------------------------------------------------"
 else
-    echo "Test $i. $var: FAILED"
+    echo "Test $i. $var: \033[31mFAILED\033[0m"
     fail=$((fail+1))
     echo "---------------------------------------------------"
 fi
@@ -75,11 +75,11 @@ diff 1 2
 
 if [ $? -eq  0 ]
 then
-    echo "Test $i. Flags -e -e: SUCCESSFUL"
+    echo "Test $i. Flags -e -e: \033[32mSUCCESSFUL\033[0m"
     suc=$((suc+1))
     echo "---------------------------------------------------"
 else
-    echo "Test $i. Flags -e -e: FAILED"
+    echo "Test $i. Flags -e -e: \033[31mFAILED\033[0m"
     fail=$((fail+1))
     echo "---------------------------------------------------"
 fi
@@ -94,11 +94,11 @@ diff 1 2
 
 if [ $? -eq  0 ]
 then
-    echo "Test $i. Flag -f: SUCCESSFUL"
+    echo "Test $i. Flag -f: \033[32mSUCCESSFUL\033[0m"
     suc=$((suc+1))
     echo "---------------------------------------------------"
 else
-    echo "Test $i. Flag -f: FAILED"
+    echo "Test $i. Flag -f: \033[31mFAILED\033[0m"
     fail=$((fail+1))
     echo "---------------------------------------------------"
 fi
