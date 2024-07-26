@@ -51,9 +51,15 @@ void output(OPER *flags, char *line, int *lineNumber, int *emptyLine,
       if (flags->b && line[0] != '\n') {
         printf("%6d\t", *lineNumber);
         *lineNumber += 1;
-      } else if (flags->b && flags->e && line[0] == '\n') {
+      }
+#if defined(__APPLE__) || defined(__MACH__)
+      else if (flags->b && flags->e && line[0] == '\n') {
         printf("      \t");
-      } else if (flags->n && !(flags->b)) {
+      }
+
+#endif
+
+      else if (flags->n && !(flags->b)) {
         printf("%6d\t", *lineNumber);
         *lineNumber += 1;
       }

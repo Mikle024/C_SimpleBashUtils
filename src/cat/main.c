@@ -14,8 +14,8 @@ int main(int argc, char *argv[]) {
   }
 
 #elif defined(__linux__)
-    int lineNumber = 1;
-    for (int i = indexFiles; i < argc; i++) {
+  int lineNumber = 1;
+  for (int i = indexFiles; i < argc; i++) {
     if (!errorFlags) readFile(&flags, argv[i], &lineNumber);
   }
 
